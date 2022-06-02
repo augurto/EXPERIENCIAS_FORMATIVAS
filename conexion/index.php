@@ -10,7 +10,7 @@
 <?php
         /* include_once("conexion.php"); */
         
-        require('conexion.php')
+        include 'conexion.php';
         Cconexion::ConexionBD();
     ?>
 </body>

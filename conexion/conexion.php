@@ -5,9 +5,9 @@ class Cconexion{
     function ConexionBD(){
 
         $host='localhost';
-        $dbname='pp';
-        $username='sserver';
-        $pasword ='root';
+        $dbname='SEACE_PROYECTO';
+        $username='proyecto';
+        $pasword ='proyecto1';
         $puerto=1433;
 
 
