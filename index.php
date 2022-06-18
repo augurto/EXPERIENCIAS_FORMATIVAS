@@ -1,3 +1,11 @@
+<?php
+	//Crear la conexión
+	$srv="DESKTOP-9429NCB\MSSQLSERVER01";
+	$opc=array("Database"=>"SEACE_PROYECTO", "UID"=>"ego", "PWD"=>"Eguito");
+	$con=sqlsrv_connect($srv,$opc) or die(print_r(sqlsrv_errors(), true));
+	$sql="SELECT  * FROM DISTRITO ;";
+	$res=sqlsrv_query($con,$sql);
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -37,42 +45,32 @@
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
+                                <th>Codigo Distrito</th>
                                 <th>Nombre</th>
-                                <th>Puesto</th>
-                                <th>Ciudad</th>                               
-                                <th>Año de Ingreso</th>
-                                <th>Salario</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
+                        <?php
+                            if(!$res)
+                            {?>
                             <tr>
-                                <td>Tiger Nixon</td>
-                                <td>Arquitecto</td>
-                                <td>Edinburgh</td>                                
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
+                                <td colspan="6">No hay datos para mostrar</td>
                             </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>Contador</td>
-                                <td>Tokyo</td>                                
-                                <td>2011/07/25</td>
-                                <td>$170,750</td>
-                            </tr>                
-                            <tr>
-                                <td>Cedric Kelly</td>
-                                <td>Senior Javascript Developer</td>
-                                <td>Edinburgh</td>                                
-                                <td>2012/03/29</td>
-                                <td>$433,060</td>
-                            </tr> 
-                                   <tr>
-                                <td>Jonas Alexander</td>
-                                <td>Developer</td>
-                                <td>San Francisco</td>                                
-                                <td>2010/07/14</td>
-                                <td>$86,500</td>
-                            </tr>                           
+                            <?php
+                            }
+                            else
+                            {
+                                while($row=sqlsrv_fetch_array($res))
+                                {?>
+                                <tr>
+                                    <td><?php echo $row['COD_DISTRITO'];?></td><td><?php echo $row['NOM_DISTRITO'];?></td>
+                                </tr>
+                                <?php
+                                }
+                            }
+                            sqlsrv_close($con);
+                            ?>                         
                         </tbody>        
                        </table>                  
                     </div>

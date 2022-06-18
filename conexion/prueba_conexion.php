@@ -1,6 +1,6 @@
 <?php
 $serverName = "DESKTOP-9429NCB\MSSQLSERVER01"; //serverName\instanceName
-$connectionInfo = array( "Database"=>"CL2_EGO", "UID"=>"ego", "PWD"=>"Eguito");
+$connectionInfo = array( "Database"=>"BDArcor", "UID"=>"ego", "PWD"=>"Eguito");
 $conn = sqlsrv_connect( $serverName, $connectionInfo);
 
 if( $conn ) {
